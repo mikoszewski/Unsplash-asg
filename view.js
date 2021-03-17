@@ -6,39 +6,6 @@ const resultPic = document.getElementById("view");
 const background = document.querySelector(".background");
 const wallpaper = document.querySelector(".wall");
 
-///wersja doa Zadanie UNPLASH
-// export const manyPics = function (data) {
-//   const date = new Date(data.created_at);
-
-//   return `
-//     <div class="row">
-//       <li class="list">
-//         <img
-//           class="column"
-//           id="myImg"
-//           src="${data.urls.small}"
-//           style="width: 100%; max-width: 500px"
-//         />
-//         <div>
-//         <h3 class="preview"> ${date.getMonth() + 1} ${date.getFullYear()}<br>${
-//     data.user.name
-//   }</h3>
-//         </div>
-//       </li>
-//     </div>`;
-// };
-
-// export const manyPics = function (data) {
-//   const date = new Date(data.created_at);
-
-//   return `
-//     <div class="row">
-//       <div class="column">
-//         <img src="${data.urls.small}">
-//       </div>
-//     </div>`;
-// };
-
 export const manyPics = function (data, index) {
   const date = new Date(data.created_at);
 

@@ -11,7 +11,6 @@ import { manyPics } from "./view.js";
 import { createEventListener } from "./view.js";
 
 const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
 const btnOpenModal = document.querySelector(".show-modal");
 const image = document.getElementById("myImg");
@@ -20,9 +19,6 @@ const parag1 = document.getElementById("para1");
 const searchField = document.querySelector(".input");
 const searchButton = document.querySelector(".btnSearch");
 const container = document.querySelector(".main--container");
-const changeBtn = document.querySelector(".blank--btn");
-const background = document.querySelector(".background");
-const resultPic = document.getElementById("view");
 const wallpaper = document.querySelector(".wall");
 
 const unsplash = createApi({
@@ -32,7 +28,6 @@ const unsplash = createApi({
 
 const closeModal = function () {
   modal.classList.add("hidden");
-  // overlay.classList.add("hidden");
 };
 
 const openModal = function (e) {
@@ -41,30 +36,7 @@ const openModal = function (e) {
   header2.textContent = `${e.alt}`;
   parag1.textContent = `${e.dataset.test}`;
   modal.classList.remove("hidden");
-  // overlay.classList.remove("hidden");
 };
-
-// btnCloseModal.addEventListener("click", closeModal);
-
-// overlay.addEventListener("click", closeModal);
-
-// const getJSON = function (url, errorMsg = 'Something went wrong') {
-//   return fetch(url).then(response => {
-//     if (!response.ok) throw new Error(`${errorMsg} ${response.status}`);
-//     return response.json();
-//   });
-// };
-
-const country = async function () {
-  const data = await fetch(
-    `https://restcountries.eu/rest/v2/name/${searchResult}`
-  );
-  const details = await data.json();
-
-  background.insertAdjacentHTML("afterend", manyPics(details[0]));
-};
-
-btnOpenModal.addEventListener("click", country);
 
 let searchResult;
 
