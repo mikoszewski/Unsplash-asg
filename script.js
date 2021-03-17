@@ -6,7 +6,6 @@ import { createApi } from "./node_modules/unsplash-js";
 import { showModalHandler } from "./view.js";
 import { imageHandler } from "./view.js";
 import { closeModalHandler } from "./view.js";
-import { closeModalOverlayHandler } from "./view.js";
 import { manyPics } from "./view.js";
 import { createEventListener } from "./view.js";
 
