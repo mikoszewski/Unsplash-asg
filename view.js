@@ -26,10 +26,6 @@ export const closeModalHandler = function (handler) {
   btnCloseModal.addEventListener("click", handler);
 };
 
-export const closeModalOverlayHandler = function (handler) {
-  overlay.addEventListener("click", handler);
-};
-
 export const createEventListener = function (element, handler) {
   if (element) {
     element.addEventListener("click", function (e) {

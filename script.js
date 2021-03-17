@@ -32,7 +32,7 @@ const closeModal = function () {
 
 const openModal = function (e) {
   image.src = `${e.src}`;
-  console.log(e.alt);
+  // console.log(e.alt);
   header2.textContent = `${e.alt}`;
   parag1.textContent = `${e.dataset.test}`;
   modal.classList.remove("hidden");
