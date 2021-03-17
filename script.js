@@ -41,10 +41,9 @@ const openModal = function (e) {
 let searchResult;
 
 searchButton.addEventListener("click", async function (e) {
-  console.log("asasasasasas");
   e.preventDefault();
   searchResult = searchField.value;
-  console.log(searchResult);
+  // console.log(searchResult);
   container.innerHTML = "";
   document.body.style.backgroundImage = "url()";
   listOfPhotos2(searchResult);
@@ -60,11 +59,9 @@ const listOfPhotos2 = async function (theme) {
   });
 
   const listOfPics = pictures.response.results;
-  console.log(listOfPics);
   listOfPics.forEach(function (elem, index) {
     wallpaper.insertAdjacentHTML("beforeend", manyPics(elem, index));
   });
-  console.log(listOfPics.length);
   for (let i = 0; i < listOfPics.length; i++) {
     createEventListener(document.querySelector(`.data-${i}`), openModal);
   }

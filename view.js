@@ -29,15 +29,10 @@ export const closeModalHandler = function (handler) {
 export const closeModalOverlayHandler = function (handler) {
   overlay.addEventListener("click", handler);
 };
-export const imageHandler = function (handler) {
-  createEventListener.addEventListener("click", handler);
-};
 
 export const createEventListener = function (element, handler) {
-  console.log(element);
   if (element) {
     element.addEventListener("click", function (e) {
-      console.log(e.target);
       handler(e.target);
       // handler(e.t);
     });
