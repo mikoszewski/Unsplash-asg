@@ -3,8 +3,6 @@
 import nodeFetch from "./node_modules/node-fetch";
 
 import { createApi } from "./node_modules/unsplash-js";
-import { showModalHandler } from "./view.js";
-import { imageHandler } from "./view.js";
 import { closeModalHandler } from "./view.js";
 import { manyPics } from "./view.js";
 import { createEventListener } from "./view.js";
@@ -22,7 +20,9 @@ const searchButton = document.querySelector(".btnSearch");
 const container = document.querySelector(".main--container");
 const wallpaper = document.querySelector(".wall");
 const secondSearch = document.getElementById("secondSearch");
-const searchFields = document.querySelectorAll(".search--field");
+// const searchFields = document.querySelectorAll(".search--field");
+
+let searchResult;
 
 const unsplash = createApi({
   accessKey: "5j4rDTmTLNT5zqvuu9AD2NKuWdfoJVQL02ZDwOmWRY8",
@@ -53,11 +53,13 @@ const loadWord2 = function () {
   searchResult = secondSearch.value;
   container.innerHTML = "";
   document.body.style.backgroundImage = "url()";
+  const loadedPage = document.querySelectorAll(".responsive");
+  loadedPage.forEach(function (ele) {
+    ele.innerHTML = "";
+  });
   secondSearch.classList.remove("hidden");
   listOfPhotos2(searchResult);
 };
-
-let searchResult;
 
 //Submit word with SearchButton - currently non activ
 // searchButton.addEventListener("click", async function (e) {
@@ -99,20 +101,29 @@ secondSearch.addEventListener("keyup", function (e) {
 });
 
 const listOfPhotos2 = async function (theme) {
-  const pictures = await unsplash.search.getPhotos({
-    query: `${theme}`,
-    page: 1,
-    perPage: 10,
-    color: "green",
-    orientation: "portrait",
-  });
+  try {
+    //ściaga max 10 także zakładam ze nie bedzie nigdy na stronie więcej niz 10,
+    const pictures = await unsplash.search.getPhotos({
+      query: `${theme}`,
+      page: 1,
+      perPage: 10,
+      // orientation: "portrait",
+    });
 
-  const listOfPics = pictures.response.results;
-  listOfPics.forEach(function (elem, index) {
-    wallpaper.insertAdjacentHTML("beforeend", manyPics(elem, index));
-  });
-  for (let i = 0; i < listOfPics.length; i++) {
-    createEventListener(document.querySelector(`.data-${i}`), openModal);
+    const listOfPics = pictures.response.results;
+
+    if (!(listOfPics.length === 0)) {
+      listOfPics.forEach(function (elem, index) {
+        wallpaper.insertAdjacentHTML("beforeend", manyPics(elem, index));
+      });
+      for (let i = 0; i < listOfPics.length; i++) {
+        createEventListener(document.querySelector(`.data-${i}`), openModal);
+      }
+    } else {
+      alert("No pics found for given word. Please choose another one.");
+    }
+  } catch (err) {
+    alert(err);
   }
 };
 
