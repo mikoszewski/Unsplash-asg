@@ -49,15 +49,13 @@ p1 {
 .big {
   line-height: 45px;
 }
-
+/* 
 .search {
-  /* bottom: 80;
-  right: 80; */
   width: 500px;
   height: 50px;
   border: 3px solid #73ad21;
   font-size: 2rem;
-}
+} */
 
 .hidden {
   display: none;
@@ -92,16 +90,16 @@ p1 {
   top: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-
+  width: 30%;
   background-color: white;
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
+  box-sizing: content-box;
 }
 
-.overlay {
+/* .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -121,18 +119,27 @@ p1 {
   font-size: 17px;
   border: none;
   cursor: pointer;
-}
+} */
 
-form.example input[type="text"] {
+.example input[type="text"] {
   padding: 10px;
-  font-size: 17px;
+  font-size: 1px;
   border: 1px solid grey;
   float: left;
   width: 80%;
   background: #f1f1f1;
 }
 
-form.example button {
+.example2 {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* input.example button {
   float: left;
   width: 15%;
   padding: 1px;
@@ -144,15 +151,15 @@ form.example button {
   cursor: pointer;
 }
 
-form.example button:hover {
+input.example button:hover {
   background: #0b7dda;
 }
 
-form.example::after {
+input.example::after {
   content: "";
   clear: both;
   display: table;
-}
+} */
 
 /*
 .images {
@@ -176,12 +183,12 @@ form.example::after {
 
 /* próba z obrazkami 1 */
 
-.column {
+/* .column {
   float: left;
   width: 100%;
   padding: 5px;
   max-width: 500px;
-}
+} */
 
 .row::after {
   content: "";
@@ -202,11 +209,11 @@ div.gallery img {
   height: auto;
 }
 
-div.desc {
+/* div.desc {
   color: rgb(22, 21, 21);
   padding: 15px;
   text-align: center;
-}
+} */
 
 .responsive {
   padding: 0 6px;

@@ -12,13 +12,17 @@ import { createEventListener } from "./view.js";
 const modal = document.querySelector(".modal");
 const btnCloseModal = document.querySelector(".close-modal");
 const btnOpenModal = document.querySelector(".show-modal");
+// const example = document.querySelector(".example");
 const image = document.getElementById("myImg");
 const header2 = document.getElementById("header2");
 const parag1 = document.getElementById("para1");
-const searchField = document.querySelector(".input");
+// const searchField = document.querySelector(".input");
+const searchField = document.querySelector(".example");
 const searchButton = document.querySelector(".btnSearch");
 const container = document.querySelector(".main--container");
 const wallpaper = document.querySelector(".wall");
+const secondSearch = document.getElementById("secondSearch");
+const searchFields = document.querySelectorAll(".search--field");
 
 const unsplash = createApi({
   accessKey: "5j4rDTmTLNT5zqvuu9AD2NKuWdfoJVQL02ZDwOmWRY8",
@@ -37,15 +41,61 @@ const openModal = function (e) {
   modal.classList.remove("hidden");
 };
 
-let searchResult;
-
-searchButton.addEventListener("click", async function (e) {
-  e.preventDefault();
+const loadWord = function () {
   searchResult = searchField.value;
-  // console.log(searchResult);
   container.innerHTML = "";
   document.body.style.backgroundImage = "url()";
+  secondSearch.classList.remove("hidden");
   listOfPhotos2(searchResult);
+};
+
+const loadWord2 = function () {
+  searchResult = secondSearch.value;
+  container.innerHTML = "";
+  document.body.style.backgroundImage = "url()";
+  secondSearch.classList.remove("hidden");
+  listOfPhotos2(searchResult);
+};
+
+let searchResult;
+
+//Submit word with SearchButton - currently non activ
+// searchButton.addEventListener("click", async function (e) {
+//   e.preventDefault();
+//   loadWord();
+// });
+
+// searchFields.forEach((item) => {
+//   item.addEventListener("keyup", function (e) {
+//     // console.log(e);
+//     // e.preventDefault();
+//     if (e.keyCode === 13 && searchField.selectionStart > 0) {
+//       e.preventDefault();
+//       console.log("olo");
+//       loadWord();
+//       item.value = "";
+//     }
+//   });
+// });
+
+// Event listener for first page
+searchField.addEventListener("keyup", function (e) {
+  // console.log(e);
+  // e.preventDefault();
+  if (e.key === "Enter" && searchField.selectionStart > 0) {
+    e.preventDefault();
+    loadWord();
+    searchField.value = "";
+  }
+});
+
+//Event listener for second page search field
+secondSearch.addEventListener("keyup", function (e) {
+  if (e.key === "Enter" && secondSearch.selectionStart > 0) {
+    e.preventDefault();
+    loadWord2();
+    secondSearch.value = "";
+  }
 });
 
 const listOfPhotos2 = async function (theme) {
@@ -68,4 +118,4 @@ const listOfPhotos2 = async function (theme) {
 
 // showModalHandler(openModal);
 closeModalHandler(closeModal);
-closeModalOverlayHandler(closeModal);
+// closeModalOverlayHandler(closeModal);
